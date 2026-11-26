@@ -298,7 +298,22 @@ class ThemeTests(unittest.TestCase):
 class BrandingTests(unittest.TestCase):
     def test_app_identity(self):
         self.assertEqual(pl.APP_NAME, "PinDesk")
-        self.assertEqual(pl.APP_VERSION, "1.0.0")
+        self.assertEqual(pl.APP_VERSION, "1.0.1")
+
+    def test_app_icon_files_exist(self):
+        icon = pl.app_icon_path()
+        self.assertIsNotNone(icon)
+        self.assertEqual(Path(icon).name, "logo.png")
+        self.assertTrue(Path(icon).is_file())
+        self.assertTrue(pl.APP_LOGO_SVG.is_file())
+
+    def test_window_uses_app_icon(self):
+        app = pl.LauncherApp()
+        app.withdraw()
+        try:
+            self.assertIsNotNone(app.icon_image)
+        finally:
+            app.destroy()
 
     def test_config_migration_preserves_registry(self):
         with tempfile.TemporaryDirectory(prefix="pindesk-migrate-") as directory:

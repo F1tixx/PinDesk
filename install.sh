@@ -16,7 +16,7 @@ import pindesk as pl
 
 pl.migrate_legacy_config()
 script = here / "pindesk.py"
-icon = pl.fallback_icon("PinDesk")
+icon = pl.app_icon_path() or pl.fallback_icon("PinDesk")
 record = {
     "id": "pindesk",
     "desktop_name": "pindesk.desktop",

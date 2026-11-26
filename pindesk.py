@@ -31,8 +31,11 @@ except ImportError:
     HAS_PIL = False
 
 APP_NAME = "PinDesk"
-APP_VERSION = "1.0.0"
+APP_VERSION = "1.0.1"
 SCHEMA_VERSION = 1
+MODULE_DIR = Path(__file__).resolve().parent
+APP_ICON = MODULE_DIR / "docs" / "logo.png"
+APP_LOGO_SVG = MODULE_DIR / "docs" / "logo.svg"
 
 CATEGORIES = [
     "AudioVideo", "Audio", "Video", "Development", "Education", "Game",
@@ -109,6 +112,11 @@ def migrate_legacy_config(paths: Paths = PATHS) -> bool:
     except OSError:
         return False
     return True
+
+
+def app_icon_path() -> Optional[str]:
+    """Return PinDesk's own logo for the window and its menu entry, if present."""
+    return str(APP_ICON) if APP_ICON.is_file() else None
 
 
 def _temp_dir() -> Path:
@@ -795,12 +803,19 @@ class LauncherApp(tk.Tk):
     def __init__(self) -> None:
         super().__init__()
         self.title(f"{APP_NAME} {APP_VERSION}")
+        self.icon_image: Optional[tk.PhotoImage] = None
+        icon = app_icon_path()
+        if icon:
+            try:
+                self.icon_image = tk.PhotoImage(file=icon)
+                self.iconphoto(True, self.icon_image)
+            except (tk.TclError, OSError):
+                self.icon_image = None
         self.geometry("860x780")
         self.minsize(760, 680)
         self.paths = PATHS
         self.records = load_registry(self.paths)
         self.current_id: Optional[str] = None
-        self.icon_image: Optional[tk.PhotoImage] = None
         self._icon_images: dict[str, tk.PhotoImage] = {}
         self.vars: dict[str, tk.Variable] = {}
         self._build_ui()
