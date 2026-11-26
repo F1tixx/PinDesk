@@ -1,0 +1,34 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-tk xvfb desktop-file-utils
+
+      - name: Compile sources
+        run: python3 -m py_compile pindesk.py test_portable_launcher.py
+
+      - name: Run tests
+        run: xvfb-run -a python3 -m unittest discover -v
+
+      - name: Smoke-test installer
+        run: |
+          export HOME="$RUNNER_TEMP/pindesk-home"
+          mkdir -p "$HOME"
+          bash install.sh
+          desktop-file-validate "$HOME/.local/share/applications/pindesk.desktop"
+          bash uninstall.sh

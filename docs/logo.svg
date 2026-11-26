@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="PinDesk logo">
+  <rect width="128" height="128" rx="24" fill="#181a1f"/>
+  <path d="M28 24h72a8 8 0 0 1 8 8v56a8 8 0 0 1-8 8H28a8 8 0 0 1-8-8V32a8 8 0 0 1 8-8z" fill="#23262d" stroke="#3a3f4a" stroke-width="3"/>
+  <rect x="32" y="30" width="64" height="7" rx="3.5" fill="#3a3f4a"/>
+  <circle cx="45" cy="34" r="3" fill="#5b9cf6"/>
+  <circle cx="56" cy="34" r="3" fill="#5b9cf6"/>
+  <g transform="translate(64 66) rotate(0)">
+    <path d="M0-26a13 13 0 0 1 13 13c0 9-7 13-9 22H-4C-6 0-13-4-13-13A13 13 0 0 1 0-26z" fill="#5b9cf6"/>
+    <path d="M-4 9h8l3 17H-7z" fill="#78affe"/>
+    <path d="M-8-14a8 8 0 0 1 8-8" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

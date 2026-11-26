@@ -1,0 +1,32 @@
+name: Feature request
+description: Suggest an improvement for PinDesk
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+    validations:
+      required: false
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This keeps PinDesk a single Python file with no mandatory dependencies
+          required: true
+        - label: This does not require running selected apps, network access or root
+          required: true
