@@ -31,7 +31,7 @@ except ImportError:
     HAS_PIL = False
 
 APP_NAME = "PinDesk"
-APP_VERSION = "1.0.1"
+APP_VERSION = "1.0.2"
 SCHEMA_VERSION = 1
 MODULE_DIR = Path(__file__).resolve().parent
 APP_ICON = MODULE_DIR / "docs" / "logo.png"

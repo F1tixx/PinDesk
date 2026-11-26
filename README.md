@@ -80,6 +80,9 @@ cd PinDesk
 python3 pindesk.py
 ```
 
+> Want the smallest download? The latest release also has an **app-only ZIP**
+> containing just `pindesk.py`, the install/uninstall scripts, README, license
+> and logo — no docs or CI folders.
 
 To add PinDesk itself to your application menu:
 

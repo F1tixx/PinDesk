@@ -298,7 +298,7 @@ class ThemeTests(unittest.TestCase):
 class BrandingTests(unittest.TestCase):
     def test_app_identity(self):
         self.assertEqual(pl.APP_NAME, "PinDesk")
-        self.assertEqual(pl.APP_VERSION, "1.0.1")
+        self.assertEqual(pl.APP_VERSION, "1.0.2")
 
     def test_app_icon_files_exist(self):
         icon = pl.app_icon_path()
