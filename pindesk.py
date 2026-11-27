@@ -31,7 +31,7 @@ except ImportError:
     HAS_PIL = False
 
 APP_NAME = "PinDesk"
-APP_VERSION = "1.0.2"
+APP_VERSION = "1.0.3"
 SCHEMA_VERSION = 1
 MODULE_DIR = Path(__file__).resolve().parent
 APP_ICON = MODULE_DIR / "docs" / "logo.png"
@@ -567,7 +567,7 @@ def _image_size(path: Path) -> tuple[int, int]:
             match = re.search(r'width\s*=\s*["\'](\d+)', text)
             height = re.search(r'height\s*=\s*["\'](\d+)', text)
             if match and height:
-                return int(match.group(1)), int(height.group(2))
+                return int(match.group(1)), int(height.group(1))
             viewbox = re.search(r'viewBox\s*=\s*["\'][\d.\-]+\s+[\d.\-]+\s+(\d+)[.\d]*\s+(\d+)', text)
             if viewbox:
                 return int(float(viewbox.group(1))), int(float(viewbox.group(2)))

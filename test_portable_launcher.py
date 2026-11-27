@@ -172,6 +172,14 @@ class CoreTests(unittest.TestCase):
         self.assertIn("<svg", icon.read_text())
         self.assertIn("PL", icon.read_text())
 
+    def test_svg_icon_size_with_width_and_height(self):
+        root = self.fake.home / "apps" / "SvgApp"
+        root.mkdir(parents=True)
+        icon = root / "icon.svg"
+        icon.write_text('<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"></svg>')
+        self.assertEqual(pl._image_size(icon), (64, 64))
+        self.assertEqual(pl.find_icon(root, None, "SvgApp"), str(icon.resolve()))
+
     def test_icon_prefers_root_over_cache(self):
         root, _ = self.make_app()
         (root / "cache").mkdir()
@@ -298,7 +306,7 @@ class ThemeTests(unittest.TestCase):
 class BrandingTests(unittest.TestCase):
     def test_app_identity(self):
         self.assertEqual(pl.APP_NAME, "PinDesk")
-        self.assertEqual(pl.APP_VERSION, "1.0.2")
+        self.assertEqual(pl.APP_VERSION, "1.0.3")
 
     def test_app_icon_files_exist(self):
         icon = pl.app_icon_path()

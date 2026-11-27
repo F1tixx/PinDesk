@@ -10,7 +10,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.9%2B-blue" alt="Python 3.9+">
   <img src="https://img.shields.io/badge/platform-Linux-orange" alt="Linux">
-  <img src="https://img.shields.io/badge/tests-21%20passing-brightgreen" alt="21 tests passing">
+  <img src="https://img.shields.io/badge/tests-22%20passing-brightgreen" alt="22 tests passing">
   <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT license">
 </p>
 
